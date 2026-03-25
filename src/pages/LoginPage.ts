@@ -7,6 +7,7 @@ export class loginPage {
     readonly emailAddress: Locator;
     readonly password: Locator;
     readonly loginButton: Locator;
+    readonly confirmEmailAddress: Locator;
     readonly errorMessage: Locator;
 
 
@@ -15,6 +16,7 @@ export class loginPage {
         this.emailAddress = page.getByRole('textbox', { name: 'Email Address' });
         this.password = page.getByRole('textbox', { name: 'Password' });
         this.loginButton = page.getByRole('button', { name: 'Sign In' });
+        this.confirmEmailAddress = page.getByRole('button', { name: 'Confirm it’s you'});
         this.errorMessage = page.getByText('Invalid email or password');
     }
 
@@ -33,6 +35,11 @@ export class loginPage {
     async clickOnLoginButton(): Promise<MyAccountPage> {
         await this.loginButton.click();
         return new MyAccountPage(this.page);
+    }
+
+    async clickOnConfirmEmailAddress(): Promise<this> {
+        await this.confirmEmailAddress.click();
+        return this;
     }
 
     async getErrorMessage(): Promise<string> {

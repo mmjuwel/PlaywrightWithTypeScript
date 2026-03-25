@@ -1,0 +1,32 @@
+[
+    {
+        "email": "mansurworkplace@gmail.com",
+        "password": "12345678",
+        "loginStatus": "success",
+        "expectedMessage": "Account Details and Order History"
+    },
+    {
+        "email": "wrongemail@gmail.com",
+        "password": "wrongpassword",
+        "loginStatus": "failed",
+        "expectedMessage": "Invalid email or password"
+    },
+    {
+        "email": "mansurworkplace@gmail.com",
+        "password": "1234567",
+        "loginStatus": "failed",
+        "expectedMessage": "Invalid email or password"
+    },
+    {
+        "email": "mansurworkplac1@gmail.com",
+        "password": "12345678",
+        "loginStatus": "failed",
+        "expectedMessage": "Invalid email or password"
+    },
+    {
+        "email": "",
+        "password": "",
+        "loginStatus": "failed",
+        "expectedMessage": "Invalid email or password"
+    }
+]
