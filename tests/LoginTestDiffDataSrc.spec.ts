@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test'
 import { loginPage } from '../src/pages/LoginPage';
 import { MyAccountPage } from '../src/pages/MyAccountPage';
-import loginTestData from '../test-data/loginTestData.json';
 import { readData } from '../src/utils/dataReader';
 
-// const testData = readData('./test-data/LoginTestData.json');
 const testData = readData('./test-data/LoginTestData.csv');
 
 

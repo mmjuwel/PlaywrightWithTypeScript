@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test'
 import { loginPage } from '../src/pages/LoginPage';
 import { MyAccountPage } from '../src/pages/MyAccountPage';
-import loginTestData from '../test-data/loginTestData.json';
+import { readData } from '../src/utils/dataReader';
 
 test.describe('Login Tests', () => {
 
-    loginTestData.forEach((data) => {
+    const testData = readData('./test-data/LoginTestData.csv');
+    for (const data of testData) {
 
         test(`Login Test with ${data.email} and ${data.password} to validate ${data.loginStatus} scenario`, async ({ page }) => {
             const login = new loginPage(page);
@@ -24,5 +25,5 @@ test.describe('Login Tests', () => {
             }
 
         });
-    });
+    }
 });
