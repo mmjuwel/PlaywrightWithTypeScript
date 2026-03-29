@@ -1,9 +1,19 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+
+
+const env = process.env.TEST_ENV || 'dev';
+dotenv.config({ path: `.env.${env}` });
+
+
+
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
+dotenv.config();
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
@@ -26,7 +36,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+     baseURL: process.env.BASE_URL || 'https://sauce-demo.myshopify.com/account/login',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -81,4 +91,14 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+
+
+// ========================
+  //  Global Setup / Teardown
+  // ========================
+ //globalSetup: require.resolve('./src/utils/GlobalSetup'),
+ // globalTeardown: require.resolve('./src/utils/GlobalTeardown'),
+
+
+
 });
